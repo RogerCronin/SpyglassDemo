@@ -2,14 +2,18 @@ const submitLogin = require("./login/submitLogin.js")
 
 const express = require("express")
 const app = express()
-const port = 5000
+const port = process.argv[2] == "true" ? 3000 : 5000
 
 app.use(express.json())
 
-app.get("/", (req, res) => {
-    res.send("<h1>200</h1>")
-    res.send(`<p>Backed open on port ${port}</p>`)
-})
+if(process.argv[2] == "true") {
+    app.use(express.static("www"))
+} else {
+    app.get("/", (req, res) => {
+        res.send("<h1>200</h1>")
+        res.send(`<p>Backed open on port ${port}</p>`)
+    })
+}
 
 app.post("/api/submitLogin", submitLogin)
 

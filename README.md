@@ -8,6 +8,8 @@
 - Run `npm run start` to launch the built project
   - Navigate to `http://localhost:3000` to see the webpage
   - You can update anything in `/src` or `/server` and it will automatically update in the browser once you save the file
+- Run `npm run static` to launch the static site located in `/www`
+  - This is how to prototype / test your HTML and CSS without implementing it with React
 
 # What does everything do?
 
