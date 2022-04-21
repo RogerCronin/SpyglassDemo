@@ -1,0 +1,27 @@
+.header {
+    position:relative;
+    text-align:center;
+    background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgb(208, 128, 232) 100%);
+    color: #F3EBF6;
+  }
+
+.flex { 
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: right;
+  }
+
+  .flex1 { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .content {
+    position:relative;
+    height:10vh;
+    text-align:center;
+    background-color: white;
+  }
