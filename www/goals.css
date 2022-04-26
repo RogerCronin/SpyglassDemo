@@ -5,6 +5,13 @@
     color: #F3EBF6;
   }
 
+  h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight:300;
+    letter-spacing: 2px;
+    font-size:48px;
+  }
+
 .flex { 
     display: flex;
     justify-content: right;
