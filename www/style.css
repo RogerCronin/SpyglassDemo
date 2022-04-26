@@ -1,5 +1,5 @@
 body {
-    background-color: #F3EBF6;
+    background-color: #ffefef ;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -22,7 +22,7 @@ body {
 
 .sign {
     padding-top: 40px;
-    color: #8C55AA;
+    color: #231F20;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 23px;
@@ -30,7 +30,7 @@ body {
 
 .sign1 {
     padding-top: 20px;
-    color: #8C55AA;
+    color: #231F20;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 18px;
@@ -90,7 +90,7 @@ font-family: 'Ubuntu', sans-serif;
   cursor: pointer;
     border-radius: 5em;
     color: #fff;
-    background: linear-gradient(to right, #9C27B0, #E040FB);
+    background: linear-gradient(to right, #A20A35, #d1577a);
     border: 0;
     padding-left: 40px;
     padding-right: 40px;
@@ -105,7 +105,7 @@ font-family: 'Ubuntu', sans-serif;
     cursor: pointer;
       border-radius: 10em;
       color: #fff;
-      background: linear-gradient(#9C27B0, #E040FB);
+      background: linear-gradient(#A20A35, #d1577a);
       border: 0;
       padding-left: 40px;
       padding-right: 40px;
@@ -121,14 +121,21 @@ font-family: 'Ubuntu', sans-serif;
 
 .forgot {
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #E1BEE7;
+    color: #A20A35;
     padding-top: 9px;
 }
 
 a {
-    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #E1BEE7;
+    color: #231F20;
     text-decoration: none
+}
+
+.sub {
+    color: #ffffff;
+}
+
+a:hover {
+    color:#A20A35;
 }
 
 @media (max-width: 600px) {
