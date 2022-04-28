@@ -10,8 +10,10 @@
 </head>
 
 
- <div class="content flex">
+ <div class="sidepanel"  id="mySidepanel">
   <div class="container borderXwidth">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav();blurToggle()">×</a>
     <a>HOME</a>
     <a href="goals.html">GOALS</a>
     <a>SUPPORT</a>
@@ -20,6 +22,9 @@
   </div>
 </div>
 
+<button class="openbtn" onclick="openNav();blurToggle()">☰</button>
+
+<div class="background" id="blur">
 <div class="header">
   <div class="inner-header flex1">
     <img src="image2.png">
@@ -45,10 +50,10 @@
   </div>
 
 
-  
+</div>
+
 <body>
   <script src="script.js"></script>
 </body>
 
 </html>
-
