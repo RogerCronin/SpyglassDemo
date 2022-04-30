@@ -1,11 +1,11 @@
 
-img {
-  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-  filter: blur(3px);
+/* img {
+   -webkit-filter: blur(5px); Safari 6.0 - 9.0 
+   filter: blur(3px);
   position: absolute;
-  right: 0%;
+  right: 0%; 
   
-}
+} */
 .line-1{
   color: rgb(255, 255, 255);
     position: relative;
@@ -142,7 +142,7 @@ p {
 }
 
 .openbtn {
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   background-color: transparent;
   color: #A20A35;
@@ -249,7 +249,47 @@ div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
 filter: opacity(20%);
 }
 
-#blur {
-  background-color: #231F20;
-  color: #1e1e1e;
+.icon {
+  position: fixed;
+  left: 40%;
+  top: 10px;
+color: #A20A35;
 }
+
+.van {
+  margin-bottom: 18px;
+}
+
+.search-container {
+  float: right;
+  margin: 4px;
+  padding: 10px;
+  background: #A20A35;
+  border-radius: 4px;
+}
+
+.search-container button {
+  float: right;
+  background: transparent;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  text-align: left;
+  margin: 0;
+}
+
+.search-container button:hover {
+  background: #231F20;
+  height: 25px;
+}
+
+.search-container input {
+  border: none;
+  height: 25px;
+}
+
+#icon2 {
+  color: #fff;
+}
+
