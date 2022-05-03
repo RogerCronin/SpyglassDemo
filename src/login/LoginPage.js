@@ -1,6 +1,8 @@
 import React from "react"
 
-import "./LoginPage.css"
+import "../style.css"
+
+import AccountInput from "./AccountInput"
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -11,15 +13,12 @@ class LoginPage extends React.Component {
         }
     }
 
-    handleUsername = e => {
-        this.setState({ username: e.target.value })
-    }
-
-    handlePassword = e => {
-        this.setState({ password: e.target.value })
+    handleChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     handleSubmit = async e => {
+        console.log(this.state)
         e.preventDefault()
         const res = await fetch("/api/submitLogin", {
             method: "POST",
@@ -37,12 +36,12 @@ class LoginPage extends React.Component {
     render() {
         return (
             <div id="loginWrapper" className="main">
-                <p className="sign" align="center">Sign in</p>
+                <p className="sign" align="center">Spy Glass</p>
                 <form className="form1">
-                    <input className="un" type="text" onChange={this.handleUsername} align="center" placeholder="Username" />
-                    <input className="pass" type="password" onChange={this.handlePassword} align="center" placeholder="Password" />
-                    <button className="submit" align="center" onClick={this.handleSubmit}>Sign in</button>
-                    <p className="forgot" align="center">Forgot password?</p>
+                    <AccountInput name="username" changeFunction={this.handleChange} placeholder="Username"/>
+                    <AccountInput name="password" type="password" changeFunction={this.handleChange} placeholder="Password"/>
+                    <button className="submit" onClick={this.handleSubmit}>Sign in</button>
+                    <p className="forgot"><a href="/newAccount">Need an Account?</a></p>
                 </form>
             </div>
         )
