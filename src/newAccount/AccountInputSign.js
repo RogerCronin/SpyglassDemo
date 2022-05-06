@@ -7,7 +7,7 @@ export default class AccountInputSign extends React.Component {
         return (
             <div>
                 <p className="sign1">{this.props.sign}</p>
-                <AccountInput name={this.props.name} type={this.props.type} placeholder={this.props.placeholder} onChange={this.props.changeFunction} />
+                <AccountInput name={this.props.name} type={this.props.type} placeholder={this.props.placeholder} changeFunction={this.props.changeFunction} />
             </div>
         )
     }

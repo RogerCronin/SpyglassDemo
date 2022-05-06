@@ -3,12 +3,13 @@ import React from "react"
 import "../style.css"
 
 import AccountInput from "./AccountInput"
+import ErrorBanner from "./ErrorBanner"
 
 class LoginPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: "",
+            email: "",
             password: ""
         }
     }
@@ -18,19 +19,19 @@ class LoginPage extends React.Component {
     }
 
     handleSubmit = async e => {
-        console.log(this.state)
         e.preventDefault()
         const res = await fetch("/api/submitLogin", {
             method: "POST",
             body: JSON.stringify({
-                username: this.state.username,
+                email: this.state.email,
                 password: this.state.password
             }),
             headers: { "Content-Type": "application/json" }
         })
-        if(!res.ok) return alert("Uh oh spaghetti o's!!!!! try \"asdf\" and \"1234\"")
-        //let json = await res.json()
-        alert("successfully logged in!!!!!!!!!!!!!!!")
+        if(!res.ok) return this.displayError(true)
+        let json = await res.json()
+        window.sessionID = json.sessionID
+        window.location.replace("/home")
     }
 
     render() {
@@ -38,8 +39,10 @@ class LoginPage extends React.Component {
             <div id="loginWrapper" className="main">
                 <p className="sign" align="center">Spy Glass</p>
                 <form className="form1">
-                    <AccountInput name="username" changeFunction={this.handleChange} placeholder="Username"/>
+                    <AccountInput name="email" changeFunction={this.handleChange} placeholder="Email"/>
                     <AccountInput name="password" type="password" changeFunction={this.handleChange} placeholder="Password"/>
+                    <br />
+                    <ErrorBanner value="Incorrect email or password" displayErrorFunc={f => this.displayError = f} />
                     <button className="submit" onClick={this.handleSubmit}>Sign in</button>
                     <p className="forgot"><a href="/newAccount">Need an Account?</a></p>
                 </form>
