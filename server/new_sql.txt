@@ -1,0 +1,53 @@
+-- account number will always be 17 char or less
+-- routing number will always be 9 char
+-- don't ask me why the industry standard for money is decimal(19, 4)
+
+drop table if exists "bank_user";
+create table "bank_user" (
+	"account_number" varchar(17) not null,
+	"routing_number" varchar(9) not null,
+	"ssn" varchar(9) not null,
+	"balance" decimal(19, 4)
+);
+
+-- goal_id will be unix timestamp of time it was created
+-- target_date will be unix timestamp
+
+drop table if exists "goal";
+create table "goal" (
+	"goal_id" int not null unique,
+	"user_id" int not null,
+	"title" varchar(45) not null,
+	"description" varchar(256),
+	"target_amount" decimal(19, 4) not null,
+	"current_amount" decimal(19, 4) not null,
+	"target_date" int not null,
+	"type" int not null,
+	"icon" varchar(128)
+);
+
+-- user_id will be unix timestamp of time it was created
+-- password is bcrypt output on password, 12 rounds
+
+drop table if exists "user";
+create table "user" (
+	"user_id" int not null unique,
+	"account_number" varchar(17) not null,
+	"routing_number" varchar(9) not null,
+	"email" varchar(128) not null,
+	"first_name" varchar(45) not null,
+	"last_name" varchar(45) not null,
+	"password" binary(60) not null
+);
+
+insert into "bank_user"
+("account_number", "routing_number", "ssn", "balance")
+values ("12345678912345678", "123456789", "111222333", 16.12);
+
+insert into "user"
+("user_id", "account_number", "routing_number", "email", "first_name", "last_name", "password")
+values (1651785941, "12345678912345678", "123456789", "john.doe@cdpipelinedevshop.com", "John", "Doe", "$2a$12$ZncrdCIQ3YC9unlNikiLn.a4cftwWXEDrsrmmgisXA7GdXsgkbZDC");
+
+insert into "goal"
+("goal_id", "user_id", "title", "description", "target_amount", "current_amount", "target_date", "type")
+values (1651786155, 1651785941, "Vacation", "My vacation to the Bahamas", 1000000.00, 1.00, 1714958955, 4);
