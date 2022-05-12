@@ -5,6 +5,8 @@ import LoginPage from "./login/LoginPage"
 import NewAccount from "./newAccount/NewAccount"
 import Home from "./home/Home"
 
+import "./Style.css"
+
 class App extends React.Component {
     render() {
         return (

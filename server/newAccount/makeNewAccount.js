@@ -1,8 +1,6 @@
 const db = require("../database.js")
 const bcrypt = require("bcrypt")
 
-// TODO check if email or account + routing already exists
-
 async function makeNewAccount(req, res) {
     const body = req.body
     try {
@@ -22,7 +20,12 @@ async function makeNewAccount(req, res) {
         if(body.routingNumber.length !== 9 || !isNumeric(body.routingNumber)) throw new Error("Invalid routing number")
         if(!isSSN(body.ssn)) throw new Error("Invalid SSN")
 
-        let rows = await db.all("select balance from 'bank_user' where account_number = ? and routing_number = ? and ssn = ?", [body.accountNumber, body.routingNumber, body.ssn.replace(/-/g, "")])
+        let existingUser = await db.all("select 1 from 'user' where account_number = ? and routing_number = ?", [body.accountNumber, body.routingNumber])
+        if(existingUser.length !== 0) throw new Error("Bank account already registered")
+        existingUser = await db.all("select 1 from 'user' where email = ?", [body.email])
+        if(existingUser.length !== 0) throw new Error("Email already registered")
+
+        let rows = await db.all("select 1 from 'bank_user' where account_number = ? and routing_number = ? and ssn = ?", [body.accountNumber, body.routingNumber, body.ssn.replace(/-/g, "")])
 
         if(rows.length !== 0) {
             let pass = await bcrypt.hash(body.password, 12)

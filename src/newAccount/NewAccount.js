@@ -1,6 +1,6 @@
 import React from "react"
 
-import "../style.css"
+import "../login/Login.css"
 
 import AccountInputSign from "./AccountInputSign"
 import ErrorBanner from "../login/ErrorBanner"
@@ -50,18 +50,20 @@ export default class NewAccount extends React.Component {
         window.location.replace("/")
     }
 
+    // TODO add a back arrow to the login screen
+
     render() {
         return (
-            <div id="newAccountWrapper" className="main">
-                <form className="form1">
-                    <p className="sign">Account Information</p>
+            <div className="loginMain">
+                <form>
+                    <h2>Account Information</h2>
 
                     <AccountInputSign sign="Email" name="email" placeholder="john.doe@example.com" changeFunction={this.handleChange} />
                     <AccountInputSign sign="First Name" name="firstName" placeholder="John" changeFunction={this.handleChange} />
                     <AccountInputSign sign="Last Name" name="lastName" placeholder="Doe" changeFunction={this.handleChange} />
                     <AccountInputSign sign="Password" type="password" name="password" placeholder="Password" changeFunction={this.handleChange} />
 
-                    <p className="sign" >Bank Information</p>
+                    <h2>Bank Information</h2>
 
                     <AccountInputSign sign="Account Number" name="accountNumber" placeholder="Account Number" changeFunction={this.handleChange} />
                     <AccountInputSign sign="Routing Number" name="routingNumber" placeholder="Routing Number" changeFunction={this.handleChange} />

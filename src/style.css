@@ -1,104 +1,50 @@
+:root {
+    --Cream: #ffefef;
+    --White: #ffffff;
+    --Dark: #231f20;
+    --Gray: #afafaf;
+    --DarkRed: #a20a35;
+    --LightRed: #d1577a;
+    --Shadow: rgba(0, 0, 0, 0.2)
+}
+
 body {
-    background-color: #ffefef ;
-    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--Cream);
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
 }
 
-p {
-    padding: 0.8em;
-    color: #231F20;
+h1 {
+    color: var(--Dark);
     font-weight: bold;
-    text-align: center;
+    font-size: 1.5em;
 }
 
-input {
-    width: 76%;
-    color: rgb(38, 50, 56);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 1px;
-    background: rgba(136, 126, 126, 0.04);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.02);
-    margin: 0 auto 25px auto;
-    text-align: center;
-}
-
-input:focus {
-    border: 2px solid rgba(0, 0, 0, 0.18) !important;
-}
-
-.main {
-    background-color: #FFFFFF;
-    width: max(300px, 28vw);
-    padding: 2em 2em 2em 2em;
-    margin: 2em auto;
-    border-radius: 16px;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-    text-align: center;
-}
-
-.sign {
-    font-size: 23px;
-}
-
-.sign1 {
-    font-size: 18px;
-}
-
-.submit {
+button {
     cursor: pointer;
     border-radius: 5em;
-    color: #ffffff;
-    background: linear-gradient(to right, #A20A35, #d1577a);
+    color: var(--White);
+    background: linear-gradient(to right, var(--DarkRed), var(--LightRed));
     border: 0;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    font-family: 'Ubuntu', sans-serif;
-    margin: auto;
+    padding: 0.8em 3.6em;
     font-size: 13px;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
-.submit1 {
-    cursor: pointer;
-    border-radius: 10em;
-    color: #ffffff;
-    background: linear-gradient(#A20A35, #d1577a);
-    border: 0;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    font-size: 20px;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+button:hover {
+    color: var(--Gray)
 }
 
-.forgot {
-    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #A20A35;
-    padding-top: 9px;
+form a {
+    color: var(--Dark);
+    text-decoration: none;
 }
 
-.errorBanner {
-    margin-top: 0;
-    color: #A20A35;
+form a:hover {
+    color: var(--Gray)
 }
 
-.success {
-    color: #008542;
-}
-
-a {
-    color: #231F20;
-    text-decoration: none
-}
-
-a:hover {
-    color:#A20A35;
+.content {
+    padding-top: 3.5em;
+    text-align: center;
+    color: var(--White);
 }
