@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Spyglass</title>
+  <link href="guide.css" rel="stylesheet" type="text/css" />
+  
+</head>
+<div class="backgroundTop">
+ <div class="sidepanel"  id="mySidepanel">
+  <div class="container borderXwidth">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav();blurToggle()">×</a>
+    <a href="home.html">HOME</a>
+    <a href="goals.html">GOALS</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="guide.html">GUIDE</a>
+    <a href="about.html">ABOUT US</a>
+  </div>
+</div>
+
+
+  <div class="icon">
+    <i class="material-icons w3-xxlarge">home</i>
+    <img src="vanguard.png" class="van" style="width: 100px; height: 30px;">
+  </div>
+
+  <div class="search-container">
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="material-icons w3-large" id="icon2">search</i></button>
+</div>
+
+<button class="openbtn" onclick="openNav();blurToggle()">☰</button>
+</div>
+
+<div class="background" id="blur">
+    <div class="header">
+      <div class="inner-header flex1">
+        <div id="snowflakeContainer">
+            <span class="snowflake"></span>
+          </div>
+      <h2>How to Guide</h2>
+      <ol>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#howto" id="guide">How to add a goal<i class="material-icons" id="arrow">play_circle_outline</i></button>
+      <hr>
+      <div id="howto" class="collapse">
+        <hr style="margin-top: 30px;">
+       <ol>To add a goal, navigate to the menu and find the</ol>
+       <hr>
+       <ol>symbol at the top of the page. Which when clicked</ol>
+       <hr>
+       <ol>you will be brought to the goal screen. You will</ol>
+       <hr>
+       <ol>find a '+' selected will allow you to create a goal</ol>
+       <hr>
+      </div>
+    </ol>
+    <ol>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#howto2" id="guide">How to delete a goal<i class="material-icons" id="arrow2">play_circle_outline</i></button>
+      <hr>
+      <div id="howto2" class="collapse">
+        <hr style="margin-top: 30px;">
+        <ol>Words</ol>
+        <hr>
+        <ol>Words</ol>
+        <hr>
+        <ol>Words</ol>
+        <hr>
+        <ol>Words</ol>
+        <hr>
+      </div>
+    </ol>
+    <ol>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#howto3" id="guide">How to edit an existing goal<i class="material-icons" id="arrow3">play_circle_outline</i></button>
+      <hr>
+      <div id="howto3" class="collapse">
+        
+      </div>
+    </ol>
+    <ol>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#howto4" id="guide">How to save your updates<i class="material-icons" id="arrow4">play_circle_outline</i></button>
+      <hr>
+      <div id="howto4" class="collapse">
+        
+      </div>
+    </ol>
+    <ol>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#howto5" id="guide">How to update your account info<i class="material-icons" id="arrow5">play_circle_outline</i></button>
+      <hr>
+      <div id="howto5" class="collapse">
+      
+      </div>
+    </ol>
+      <ol>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#howto6" id="guide">How to update or unlink your bank account<i class="material-icons" id="arrow6">play_circle_outline</i></button>
+      <hr>
+      <div id="howto6" class="collapse">
+     
+      </div>
+    </ol>
+    <ol>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#howto7" id="guide">How to contact support<i class="material-icons" id="arrow7">play_circle_outline</i></button>
+      <hr>
+      <div id="howto7" class="collapse">
+        
+      </div>
+    </ol>
+      </div>
+    </div>
+</div>
+  <script src="script.js"></script>
+</body>
+
+</html>

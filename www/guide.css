@@ -1,0 +1,285 @@
+.header {
+    position:absolute;
+    text-align:left;
+    background: linear-gradient(60deg, rgb(162, 10, 53) 100%, rgb(156, 33, 33) 100%);
+    color: #F3EBF6;
+  }
+  .logo {
+    width:50px;
+    fill:white;
+    padding-right:15px;
+    display:inline-block;
+    vertical-align: middle;
+  }
+  
+  .inner-header {
+    width:212vh;
+    margin: 10px;
+    padding: 4px;
+  }
+  
+  /* Sidepanel Collapse */
+  
+  .sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color:#1e1e1e;
+    color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidepanel a:hover {
+    color: #A20A35;
+  }
+  
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    color: #fff;
+  }
+  
+  .openbtn {
+    font-size: 22px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #A20A35;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color:#231F20  ;
+  }
+  
+  div.container a
+  {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+      color: #fff;
+      font: 15px;
+      margin: 0px 3px;
+      padding: 10px 10px;
+      position: relative;
+      cursor: pointer;
+  
+  }
+  
+  
+  div.borderXwidth a:before, div.borderXwidth a:after
+  {
+      position: absolute;
+      opacity: 0;
+      width: 0%;
+      height: 2px;
+      content: '';
+      background: rgb(0, 0, 0);
+      transition: all 0.3s;
+  }
+  
+  div.borderXwidth a:before
+  {
+      left: 0px;
+      top: 0px;
+  }
+  
+  div.borderXwidth a:after
+  {
+      right: 0px;
+      bottom: 0px;
+  }
+  
+  div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
+  {
+      opacity: 1;
+      width: 100%;
+  }
+  
+  
+  .background#blur.active {
+   z-index: 5;
+  filter: opacity(20%);
+  }
+  
+  .icon {
+    position: absolute;
+    left: 40%;
+    top: 10px;
+  color: #A20A35;
+  }
+  
+  .van {
+    margin-bottom: 18px;
+    
+  }
+  
+  .search-container {
+    float: right;
+    margin: 4px;
+    padding: 10px;
+    background: #A20A35;
+    border-radius: 4px;
+  }
+  
+  .search-container button {
+    float: right;
+    background: transparent;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .search-container button:hover {
+    background: #231F20;
+    height: 25px;
+  }
+  
+  .search-container input {
+    border: none;
+    height: 25px;
+    width: 204px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .van {
+    margin-bottom: 18px;
+    margin-left: 1px;
+  }
+  
+  #icon2 {
+    color: #fff;
+  }
+
+  #arrow {
+    position: absolute;
+    margin: 4px;
+    font-size: 18px;
+    transform: rotate(90deg);
+}
+
+#arrow2 {
+  position: absolute;
+  margin: 4px;
+  font-size: 18px;
+  transform: rotate(90deg);
+}
+
+#arrow3 {
+  position: absolute;
+  margin: 4px;
+  font-size: 18px;
+  transform: rotate(90deg);
+}
+
+#arrow4 {
+  position: absolute;
+  margin: 4px;
+  font-size: 18px;
+  transform: rotate(90deg);
+}
+
+#arrow5 {
+  position: absolute;
+  margin: 4px;
+  font-size: 18px;
+  transform: rotate(90deg);
+}
+
+#arrow6 {
+  position: absolute;
+  margin: 4px;
+  font-size: 18px;
+  transform: rotate(90deg);
+}
+
+#arrow7 {
+  position: absolute;
+  margin: 4px;
+  font-size: 18px;
+  transform: rotate(90deg);
+}
+
+.btn:hover {
+  color: #231F20;
+}
+
+#guide {
+  background-color: transparent;
+  font-size: 16px;
+  border: none;
+}
+
+.btn {
+  padding-right: 30px;
+  
+}
+
+ hr {
+ width: 500px;
+ height: .5px;
+ background-color:#231F20;
+
+}
+
+#howto hr {
+  width: 335px;
+  background-color:#231F20;
+  margin-left: 40px;
+}
+
+#howto2 hr {
+    width: 330px;
+    background-color:#231F20;
+    margin-left: 40px;
+    height: .5;
+  }
+
+h2 {
+    margin-left: 5px;
+    margin-bottom: 25px;
+}
+
+.book {
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    margin-left: 60%;
+  
+}
+
+#snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+  }
+
+  .snowflake {
+    position: fixed;
+    background-color: #CCC;
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
