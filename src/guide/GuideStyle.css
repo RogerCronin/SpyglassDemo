@@ -1,0 +1,9 @@
+.guideContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guideContent div {
+    width: max(300px, 30vw);
+}

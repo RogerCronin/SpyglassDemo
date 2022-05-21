@@ -6,7 +6,12 @@
     background-color: var(--White);
 }
 
+.navBar div {
+    height: 100%;
+}
+
 .menuButton {
+    height: 100%;
     border-radius: 0;
     font-size: 1.5em;
     cursor: pointer;
@@ -60,14 +65,16 @@
     font-size: 36px;
 }
 
-.sidePanel div span {
+.sidePanel div a {
+    color: var(--White);
+    text-decoration: none;
     transition: color 0.2s;
     margin: 0 0.1em;
     padding: 0.5em;
     cursor: pointer;
 }
 
-.sidePanel div span:hover {
+.sidePanel div a:hover {
     color: var(--DarkRed);
 }
 

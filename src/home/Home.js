@@ -4,7 +4,7 @@ import "./HomeStyle.css"
 
 import NavBar from "./NavBar"
 
-class LoginPage extends React.Component {
+class Home extends React.Component {
     render() {
         return (
             <div>
@@ -22,7 +22,7 @@ class LoginPage extends React.Component {
                 <NavBar />
                 <div className="content homeContent">
                     <div>
-                        <h1>Welcome to Spyglass!</h1>
+                        <h1 className="title">Welcome to Spyglass!</h1>
                         <p className="homeTypewriter">get hyyyyyyype</p>
                     </div>
                 </div>
@@ -31,4 +31,4 @@ class LoginPage extends React.Component {
     }
 }
 
-export default LoginPage
+export default Home

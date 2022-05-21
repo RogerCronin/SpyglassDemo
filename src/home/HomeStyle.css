@@ -1,14 +1,7 @@
 .homeContent {
-    background: linear-gradient(60deg, var(--DarkRed) 100%, var(--LightRed) 100%);
-    height: calc(100vh - 3.5em);
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.homeContent h1 {
-    color: var(--White);
-    font-size: 3em;
 }
 
 .homeTypewriter {

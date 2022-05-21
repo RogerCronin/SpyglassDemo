@@ -1,0 +1,41 @@
+.collapsible label {
+    cursor: pointer;
+}
+
+.collapsible label h1 {
+    color: var(--White);
+    transition: color 0.2s;
+}
+
+.collapsible label h1:hover {
+    color: var(--Dark);
+}
+
+.collapsible label input {
+    display: none;
+}
+
+.collapsible label .collapsibleContent {
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in-out;
+}
+
+.collapsibleMargin {
+    margin: 0;
+    height: 1em;
+    max-height: 0;
+    transition: max-height 0.2s ease-in-out;
+}
+
+.collapsible label input:checked ~ p {
+    max-height: 100vh;
+    display: block;
+}
+
+.arrowIcon {
+    position: relative;
+    top: 0.15em;
+    left: 0.15em;
+}

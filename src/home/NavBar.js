@@ -56,11 +56,11 @@ class SidePanel extends React.Component {
                 <div className={`sidePanel${this.state.out ? " sidePanelOut" : ""}`}>
                     <div>
                         <span className="closeButton" onClick={this.toggle}>x</span>
-                        <span>HOME</span>
-                        <span>GOALS</span>
-                        <span>SUPPORT</span>
-                        <span>GUIDE</span>
-                        <span>ABOUT US</span>
+                        <a href="/home">HOME</a>
+                        <a href="/goals">GOALS</a>
+                        <a href="/support">SUPPORT</a>
+                        <a href="/guide">GUIDE</a>
+                        <a href="/about">ABOUT US</a>
                     </div>
                 </div>
                 {this.state.out ? <div className="navBarBackground" /> : null}
