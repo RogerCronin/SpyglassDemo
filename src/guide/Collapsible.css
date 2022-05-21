@@ -34,8 +34,14 @@
     display: block;
 }
 
+.collapsible label input:checked ~ h1 .arrowIcon {
+    transform: rotate(90deg);
+}
+
 .arrowIcon {
     position: relative;
     top: 0.15em;
     left: 0.15em;
+    transition: transform 0.1s linear;
+    transform: rotate(0deg);
 }

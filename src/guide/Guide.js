@@ -46,19 +46,12 @@ class Guide extends React.Component {
 }
 
 class Collapsible extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            collapsed: true
-        }
-    }
-
     render() {
         return (
             <div className="collapsible">
                 <label>
-                    <h1>{this.props.label}<Arrow /></h1>
                     <input type="checkbox"/>
+                    <h1>{this.props.label}<Arrow /></h1>
                     <p className="collapsibleContent">{this.props.children}</p>
                     <p className="collapsibleMargin" />
                     <hr />
