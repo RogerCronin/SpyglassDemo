@@ -10,6 +10,7 @@
     <h1>Dashboard</h1>
     <p>Access some functions here</p>
     <button onclick="reset()">Reset Database</button>
+    <button onclick="giveMoney()">Add $100 to balance</button>
     <p>Execute SQL queries:</p>
     <input id="sqlInput"></input>
     <button onclick="runSQL(null, 0)">Run</button>
@@ -54,6 +55,10 @@
         for(let statement of resetFunctions) {
             await runSQL(statement, 0)
         }
+    }
+
+    function giveMoney() {
+        runSQL("update bank_user set balance = balance + 100", 0)
     }
 
     function outputSQL(string) {
