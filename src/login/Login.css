@@ -1,3 +1,7 @@
+.creamBG {
+    background: var(--Cream);
+}
+
 .loginMain {
     display: flex;
     flex-direction: column;

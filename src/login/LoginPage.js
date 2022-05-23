@@ -14,6 +14,14 @@ class LoginPage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        document.body.classList.add("creamBG")
+    }
+
+    componentWillUnmount() {
+        document.body.classList.remove("creamBG")
+    }
+
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -30,13 +38,13 @@ class LoginPage extends React.Component {
         })
         if(!res.ok) return this.displayError(true)
         let json = await res.json()
-        window.sessionID = json.sessionID
+        sessionStorage.setItem("sessionID", json.sessionID)
         window.location.replace("/home")
     }
 
     render() {
         return (
-            <div id="loginWrapper" className="loginMain">
+            <div className="loginMain">
                 <h1 className="loginMainTitle">Spy Glass</h1>
                 <form>
                     <AccountInput name="email" changeFunction={this.handleChange} placeholder="Email"/>

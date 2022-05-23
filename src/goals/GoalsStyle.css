@@ -1,0 +1,76 @@
+.goalsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.goal div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 8em;
+    width: 8em;
+    background-color: orangered; /* test color */
+    border-radius: 50%;
+}
+
+.goalsContent > div {
+    width: max(300px, 30vw);
+    display: flex;
+    justify-content: center;
+    gap: 0 2em;
+    flex-wrap: wrap;
+}
+
+h1.title.dollarAmount {
+    margin: 0;
+    font-size: 5em;
+}
+
+.goalBar {
+    flex-direction: column;
+}
+
+.goalBar progress {
+    height: 3em;
+    width: max(300px, 30vw);
+}
+
+.goalBar p {
+    font-size: 2em;
+    margin: 0.5em;
+}
+
+.goalTransfer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--Cream);
+    color: var(--Dark);
+    width: max(300px, 30vw);
+    border-radius: 1.5em;
+    box-shadow: 0 11px 35px 2px rgb(0, 0, 0, 0.14);
+    text-align: center;
+    padding: 3em 0;
+    margin: 0 0 1em 0;
+}
+
+.goalTransfer p {
+    font-size: 1.5em;
+}
+
+.goalTransfer div input {
+    width: 76%;
+    color: var(--Cream);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: var(--Dark);
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 27px;
+    text-align: center;
+}

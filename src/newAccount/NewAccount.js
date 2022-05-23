@@ -19,6 +19,14 @@ export default class NewAccount extends React.Component {
         }
     }
 
+    componentDidMount() {
+        document.body.classList.add("creamBG")
+    }
+
+    componentWillUnmount() {
+        document.body.classList.remove("creamBG")
+    }
+
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
     }

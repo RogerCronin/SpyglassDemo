@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: var(--Cream);
+    background: linear-gradient(60deg, var(--DarkRed) 100%, var(--LightRed) 100%);
     font-family: "Ubuntu", sans-serif;
     margin: 0;
 }
@@ -47,7 +47,6 @@ form a:hover {
     padding-top: 3.5em;
     text-align: center;
     color: var(--White);
-    background: linear-gradient(60deg, var(--DarkRed) 100%, var(--LightRed) 100%);
     height: calc(100vh - 3.5em);
 }
 

@@ -1,8 +1,14 @@
 const db = require("./database.js")
 
 const handleDBRequest = require("./dashboard/handleDBRequest.js")
+
 const submitLogin = require("./login/submitLogin.js")
 const makeNewAccount = require("./newAccount/makeNewAccount.js")
+
+const getGoals = require("./goals/getGoals.js")
+const getGoal = require("./goals/getGoal.js")
+const getBalance = require("./goals/getBalance.js")
+const addToGoal = require("./goals/addToGoal.js")
 
 const express = require("express")
 const app = express()
@@ -22,6 +28,10 @@ if(process.argv[2] == "true") {
 
 app.post("/api/submitLogin", submitLogin)
 app.post("/api/makeNewAccount", makeNewAccount)
+app.post("/api/getGoals", getGoals)
+app.post("/api/getGoal", getGoal)
+app.post("/api/getBalance", getBalance)
+app.post("/api/addToGoal", addToGoal)
 
 app.listen(port, () => {
     console.log(`Backend open on port ${port}`)
