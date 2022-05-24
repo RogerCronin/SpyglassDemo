@@ -7,6 +7,7 @@ import Home from "./home/Home"
 import Guide from "./guide/Guide"
 import Goals from "./goals/Goals"
 import GoalView from "./goals/GoalView"
+import GoalEdit from "./goals/GoalEdit"
 
 import "./Style.css"
 
@@ -17,10 +18,13 @@ class App extends React.Component {
             <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/newAccount" element={<NewAccount />} />
+
                 <Route path="/home" element={<Home />} />
                 <Route path="/guide" element={<Guide />} />
+
                 <Route path="/goals" element={<Goals />} />
                 <Route path="/goals/:id" element={<GoalView />} />
+                <Route path="/goals/:id/edit" element={<GoalEdit />} />
             </Routes>
             </BrowserRouter>
         )

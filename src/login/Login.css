@@ -40,3 +40,7 @@
     margin-top: -0.2em;
     color: var(--DarkRed)
 }
+
+.inputSign {
+    color: var(--Dark);
+}

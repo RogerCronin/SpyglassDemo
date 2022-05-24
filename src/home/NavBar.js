@@ -20,9 +20,7 @@ export default class NavBar extends React.Component {
         return (
             <div className="navBar">
                 <SidePanel />
-                <div className="navBarIcon">
-                    <img src={vanguardLogo} alt="vanguard logo" />
-                </div>
+                <img src={vanguardLogo} alt="vanguard logo" />
             </div>
         )
     }

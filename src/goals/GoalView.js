@@ -2,6 +2,7 @@ import React from "react"
 import { useParams } from "react-router-dom"
 
 import "./GoalsStyle.css"
+import "../icons.css"
 
 import NavBar from "../home/NavBar"
 
@@ -11,9 +12,9 @@ class GoalView extends React.Component {
         this.state = {
             title: "",
             description: "",
-            targetAmount: null,
-            currentAmount: null,
-            targetDate: null,
+            targetAmount: 0,
+            currentAmount: 0,
+            targetDate: 0,
             type: null,
             icon: null,
             userID: null
@@ -27,7 +28,7 @@ class GoalView extends React.Component {
             description: goal.description,
             targetAmount: goal.target_amount,
             currentAmount: goal.current_amount,
-            targetDate: goal.targetDate,
+            targetDate: goal.target_date,
             type: goal.type,
             icon: goal.icon,
             userID: goal.user_id
@@ -56,12 +57,40 @@ class GoalView extends React.Component {
             <div>
                 <NavBar />
                 <div className="content goalsContent">
+                    <EditBar goalID={this.props.params.id} />
                     <h1 className="title">You've saved</h1>
                     <h1 className="title dollarAmount">${dispMoney(this.state.currentAmount)}</h1>
                     <h1 className="title">towards {this.state.title}</h1>
+                    <p className="goalDescription">{this.state.description}</p>
                     <GoalBar current={this.state.currentAmount} target={this.state.targetAmount} />
-                    <GoalTransfer id={this.state.userID} goalID={this.props.params.id} />
+                    <GoalTransfer goalID={this.props.params.id} />
                 </div>
+            </div>
+        )
+    }
+}
+
+class EditBar extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            editing: false
+        }
+    }
+
+    goBack = () => {
+        window.location.replace("/goals")
+    }
+
+    edit = () => {
+        window.location.replace(`/goals/${this.props.goalID}/edit`)
+    }
+
+    render() {
+        return (
+            <div className="editBar">
+                <i className="material-icons" onClick={this.goBack}>arrow_back</i>
+                <i className="material-icons" onClick={this.edit}>edit</i>
             </div>
         )
     }

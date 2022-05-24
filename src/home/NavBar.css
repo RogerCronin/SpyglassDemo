@@ -26,7 +26,7 @@
     background: var(--Dark);
 }
 
-.navBarIcon img {
+.navBar img {
     position: fixed;
     top: 0.5em;
     left: 50%;

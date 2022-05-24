@@ -7,6 +7,7 @@ export default class AccountInput extends React.Component {
                 name={this.props.name}
                 type={this.props.type || "text"}
                 placeholder={this.props.placeholder}
+                value={this.props.value}
                 onChange={this.props.changeFunction}
                 className="accountInput"
             />
