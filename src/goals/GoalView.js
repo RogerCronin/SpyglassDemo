@@ -1,10 +1,11 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 
-import "./GoalsStyle.css"
+import "./GoalViewStyle.css"
 import "../icons.css"
 
 import NavBar from "../home/NavBar"
+import ErrorBanner from "../login/ErrorBanner"
 
 class GoalView extends React.Component {
     constructor(props) {
@@ -15,9 +16,9 @@ class GoalView extends React.Component {
             targetAmount: 0,
             currentAmount: 0,
             targetDate: 0,
-            type: null,
-            icon: null,
-            userID: null
+            type: 0,
+            icon: 0,
+            userID: 0
         }
     }
 
@@ -33,6 +34,7 @@ class GoalView extends React.Component {
             icon: goal.icon,
             userID: goal.user_id
         })
+        document.querySelector(".progressBar").childNodes[0].style.width = `${goal.current_amount / goal.target_amount * 100}%`
     }
 
     async getInformation() {
@@ -56,14 +58,23 @@ class GoalView extends React.Component {
         return (
             <div>
                 <NavBar />
-                <div className="content goalsContent">
+                <div className="content goalViewContent">
                     <EditBar goalID={this.props.params.id} />
-                    <h1 className="title">You've saved</h1>
-                    <h1 className="title dollarAmount">${dispMoney(this.state.currentAmount)}</h1>
-                    <h1 className="title">towards {this.state.title}</h1>
-                    <p className="goalDescription">{this.state.description}</p>
-                    <GoalBar current={this.state.currentAmount} target={this.state.targetAmount} />
-                    <GoalTransfer goalID={this.props.params.id} />
+                    <div className="topInfo">
+                        <p>You've saved</p>
+                        <h1>${dispMoney(this.state.currentAmount)}</h1>
+                        <p>towards {this.state.title}</p>
+                        <p className="description">"{this.state.description}"</p>
+                    </div>
+                    <div className="middleInfo">
+                        <div className="progressBar">
+                            <div></div>
+                        </div>
+                        <p>{dispMoney(this.state.currentAmount)} / {dispMoney(this.state.targetAmount)} dollars</p>
+                        <p className="description">{dispTimestamp(this.state.targetDate)} deadline</p>
+                        <p className="description">Save ${dispMoney(5)} per week</p>
+                    </div>
+                    <MoneyTransfer />
                 </div>
             </div>
         )
@@ -71,44 +82,20 @@ class GoalView extends React.Component {
 }
 
 class EditBar extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            editing: false
-        }
-    }
-
-    goBack = () => {
-        window.location.replace("/goals")
-    }
-
-    edit = () => {
-        window.location.replace(`/goals/${this.props.goalID}/edit`)
-    }
+    back = () => window.location.replace("/goals")
+    edit = () => window.location.replace(`/goals/${this.props.goalID}/edit`)
 
     render() {
         return (
             <div className="editBar">
-                <i className="material-icons" onClick={this.goBack}>arrow_back</i>
-                <i className="material-icons" onClick={this.edit}>edit</i>
+                <span className="material-icons" onClick={this.back}>arrow_back</span>
+                <span className="material-icons" onClick={this.edit}>edit</span>
             </div>
         )
     }
 }
 
-class GoalBar extends React.Component {
-    render() {
-        return (
-            <div className="goalBar">
-                <progress className="goalBar" value={this.props.current} max={this.props.target} />
-                <p>{dispMoney(this.props.current)}/{dispMoney(this.props.target)} dollars</p>
-                <p>{Math.floor(this.props.current / this.props.target * 100)}% there!</p>
-            </div>
-        )
-    }
-}
-
-class GoalTransfer extends React.Component {
+class MoneyTransfer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -149,18 +136,19 @@ class GoalTransfer extends React.Component {
         })
         let json = await res.json()
         if(!res.ok) {
-            alert("error!")
+            this.changeValue(json.error)
+            this.displayError(true)
             return
         }
-        console.log(json)
     }
 
     render() {
         return (
-            <div className="goalTransfer">
+            <div className="moneyTransfer">
                 <p>${dispMoney(this.state.balance)} in account</p>
                 <div>
                     <input type="number" onChange={this.handleChange}></input>
+                    <ErrorBanner value="Error transfering money" changeValueFunc={f => this.changeValue = f} displayErrorFunc={f => this.displayError = f} />
                     <button onClick={this.transfer}>Transfer to goal</button>
                 </div>
             </div>
@@ -169,7 +157,12 @@ class GoalTransfer extends React.Component {
 }
 
 function dispMoney(v) {
-    return Math.round(v * 100) / 100
+    return (Math.round(v * 100) / 100 + .001).toString().slice(0, -1)
+}
+
+function dispTimestamp(v) {
+    let d = new Date(v * 1000)
+    return d.toLocaleDateString({ year: "numeric", month: "short", day: "numeric" })
 }
 
 // use advanced trickery so I can still develop in react v18 with classes, I guess
