@@ -1,6 +1,7 @@
 import React from "react"
 
 import "./GoalsStyle.css"
+import "../icons.css"
 
 import NavBar from "../home/NavBar"
 
@@ -33,7 +34,8 @@ class Goals extends React.Component {
         return json.goals.map(g => <Goal key={g.goal_id}
             title={g.title}
             id={g.goal_id}
-            icon={g.icon} />)
+            type={g.type}
+            progress={g.current_amount / g.target_amount * 100} />)
     }
 
     render() {
@@ -45,6 +47,11 @@ class Goals extends React.Component {
                     {/* Search box here, maybe? */}
                     <div>
                         {this.state.goals}
+                        <Goal key="newGoal"
+                            title="New Goal"
+                            id="newGoal"
+                            type="7"
+                            progress="-1" />
                     </div>
                 </div>
             </div>
@@ -53,15 +60,33 @@ class Goals extends React.Component {
 }
 
 class Goal extends React.Component {
-    handleClick = async e => {
-        window.location.replace(`/goals/${this.props.id}`)
+    iconList = [
+        "house",
+        "directions_car",
+        "school",
+        "emergency_home",
+        "beach_access",
+        "elderly",
+        "flare",
+        "add"
+    ]
+
+    handleClick = async () => {
+        window.location.assign(`/goals/${this.props.id}`)
+    }
+
+    icon(type) {
+        return this.iconList[type]
     }
 
     render() {
         return (
             <div className="goal" onClick={this.handleClick}>
-                <div />
+                <div className="material-icons">{this.icon(this.props.type)}</div>
                 <p>{this.props.title}</p>
+                <div className="progressBar" style={{ display: this.props.progress === "-1" ? "none" : "" }}>
+                    <div style={{ width: `${this.props.progress}%` }}></div>
+                </div>
             </div>
         )
     }

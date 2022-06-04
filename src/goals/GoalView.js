@@ -8,6 +8,16 @@ import NavBar from "../home/NavBar"
 import ErrorBanner from "../login/ErrorBanner"
 
 class GoalView extends React.Component {
+    savingsTips = [
+        "Savings tip: Budget enough savings not only for your down payment but also for closing costs, property taxes, and ongoing repairs to make sure you're ready for home ownership.",
+        "Savings tip: Saving up for a larger down payment can allow you to have a lower monthly payment.",
+        "Savings tip: Apply for as many grants and scholarships as possible to limit costs.",
+        "Savings tip: Consistently make small contributions and watch your emergency fund grow. We suggest a minimum goal of $500.",
+        "Savings tip: The sooner you book a flight, the cheaper they typically are. Try and plan your vacations far in advance to maximize your savings time.",
+        "Savings tip: If your workplace offers a retirement plan, contribute up to the maximum amount allowed by law for the greatest retirement benefit.",
+        ""
+    ]
+
     constructor(props) {
         super(props)
         this.state = {
@@ -47,11 +57,12 @@ class GoalView extends React.Component {
             headers: { "Content-Type": "application/json" }
         })
         let json = await res.json()
-        if(!res.ok) {
-            alert("error!")
-            return
-        }
+        if(!res.ok) return window.location.replace("/goals")
         return json
+    }
+
+    savingsTip(type) {
+        return this.savingsTips[type]
     }
 
     render() {
@@ -71,10 +82,11 @@ class GoalView extends React.Component {
                             <div></div>
                         </div>
                         <p>{dispMoney(this.state.currentAmount)} / {dispMoney(this.state.targetAmount)} dollars</p>
+                        <p className="description">{this.savingsTip(this.state.type)}</p>
                         <p className="description">{dispTimestamp(this.state.targetDate)} deadline</p>
                         <p className="description">Save ${dispMoney(5)} per week</p>
                     </div>
-                    <MoneyTransfer />
+                    <MoneyTransfer goalID={this.props.params.id} />
                 </div>
             </div>
         )
@@ -82,8 +94,8 @@ class GoalView extends React.Component {
 }
 
 class EditBar extends React.Component {
-    back = () => window.location.replace("/goals")
-    edit = () => window.location.replace(`/goals/${this.props.goalID}/edit`)
+    back = () => window.location.assign("/goals")
+    edit = () => window.location.assign(`/goals/${this.props.goalID}/edit`)
 
     render() {
         return (
@@ -140,6 +152,7 @@ class MoneyTransfer extends React.Component {
             this.displayError(true)
             return
         }
+        window.location.reload()
     }
 
     render() {

@@ -10,6 +10,7 @@ const getGoal = require("./goals/getGoal.js")
 const getBalance = require("./goals/getBalance.js")
 const addToGoal = require("./goals/addToGoal.js")
 const updateGoal = require("./goals/updateGoal.js")
+const deleteGoal = require("./goals/deleteGoal.js")
 
 const express = require("express")
 const app = express()
@@ -34,6 +35,7 @@ app.post("/api/getGoal", getGoal)
 app.post("/api/getBalance", getBalance)
 app.post("/api/addToGoal", addToGoal)
 app.post("/api/updateGoal", updateGoal)
+app.post("/api/deleteGoal", deleteGoal)
 
 app.listen(port, () => {
     console.log(`Backend open on port ${port}`)

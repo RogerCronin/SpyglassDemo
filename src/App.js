@@ -8,6 +8,7 @@ import Guide from "./guide/Guide"
 import Goals from "./goals/Goals"
 import GoalView from "./goals/GoalView"
 import GoalEdit from "./goals/GoalEdit"
+import NewGoal from "./goals/NewGoal"
 
 import "./Style.css"
 
@@ -23,6 +24,7 @@ class App extends React.Component {
                 <Route path="/guide" element={<Guide />} />
 
                 <Route path="/goals" element={<Goals />} />
+                <Route path="/goals/newGoal" element={<NewGoal />} />
                 <Route path="/goals/:id" element={<GoalView />} />
                 <Route path="/goals/:id/edit" element={<GoalEdit />} />
             </Routes>

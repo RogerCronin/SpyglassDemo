@@ -55,7 +55,7 @@ export default class NewAccount extends React.Component {
         this.changeValue("Account successfully created! Redirecting...") // TODO make this green
         this.displayError(true)
         await new Promise(r => setTimeout(r, 3000))
-        window.location.replace("/")
+        window.location.assign("/")
     }
 
     // TODO add a back arrow to the login screen

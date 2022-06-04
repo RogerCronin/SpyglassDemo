@@ -1,0 +1,34 @@
+.goalEditContent.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--White);
+    width: max(300px, 30vw);
+    height: auto;
+    margin: 4em auto;
+    border-radius: 1.5em;
+    box-shadow: 0 11px 35px 2px rgb(0, 0, 0, 0.14);
+    text-align: center;
+    padding: 4em;
+}
+
+.goalEditContent div input {
+    background: var(--Dark);
+    color: var(--Cream);
+}
+
+.goalEditContent div select {
+    background: var(--Dark);
+    color: var(--Cream);
+    width: 78%;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 27px;
+    text-align: center;
+}

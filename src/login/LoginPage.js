@@ -39,7 +39,7 @@ class LoginPage extends React.Component {
         if(!res.ok) return this.displayError(true)
         let json = await res.json()
         sessionStorage.setItem("sessionID", json.sessionID)
-        window.location.replace("/home")
+        window.location.assign("/home")
     }
 
     render() {

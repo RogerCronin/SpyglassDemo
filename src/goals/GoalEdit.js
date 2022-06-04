@@ -1,7 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 
-import "./GoalsStyle.css"
+import "./GoalEdit.css"
 import "../login/Login.css"
 import "../icons.css"
 
@@ -9,6 +9,7 @@ import "../newAccount/AccountInputSign"
 
 import NavBar from "../home/NavBar"
 import AccountInputSign from "../newAccount/AccountInputSign"
+import ErrorBanner from "../login/ErrorBanner"
 
 class GoalEdit extends React.Component {
     constructor(props) {
@@ -28,7 +29,6 @@ class GoalEdit extends React.Component {
     }
 
     handleSubmit = async e => {
-        alert(this.state.targetDate + "; " + dateToTimestamp(this.state.targetDate))
         e.preventDefault()
         const res = await fetch("/api/updateGoal", {
             method: "POST",
@@ -44,11 +44,32 @@ class GoalEdit extends React.Component {
             }),
             headers: { "Content-Type": "application/json" }
         })
+        const json = await res.json()
         if(!res.ok) {
-            alert("oh no!!!!!!!")
+            this.changeValue(json.error)
+            this.displayError(true)
             return
         }
-        window.location.replace(`/goals/${this.props.params.id}`)
+        window.location.assign(`/goals/${this.props.params.id}`)
+    }
+
+    handleDelete = async () => {
+        const res = window.confirm("Delete this goal? This action cannot be reversed.")
+        if(res) {
+            const res = await fetch("/api/deleteGoal", {
+                method: "POST",
+                body: JSON.stringify({
+                    token: 1, // TODO change
+                    id: this.props.params.id
+                }),
+                headers: { "Content-Type": "application/json" }
+            })
+            if(!res.ok) {
+                alert("Well THAT's not supposed to happen........")
+                return
+            }
+            window.location.replace("/goals")
+        }
     }
 
     async getInformation() {
@@ -69,7 +90,6 @@ class GoalEdit extends React.Component {
     }
 
     async componentDidMount() {
-        document.body.classList.add("creamBG")
         const { goal } = await this.getInformation()
         this.setState({
             title: goal.title,
@@ -81,25 +101,29 @@ class GoalEdit extends React.Component {
         })
     }
 
-    componentWillUnmount() {
-        document.body.classList.remove("creamBG")
-    }
-
     render() {
         return (
             <div>
                 <NavBar />
-                <div className="content goalsView">
+                <div className="content goalEditContent">
                     <div className="goalEdit">
-                        <h1 className="title">Edit Goal</h1>
                         <AccountInputSign sign="Title" name="title" value={this.state.title} changeFunction={this.handleChange} />
                         <AccountInputSign sign="Description" name="description" value={this.state.description} changeFunction={this.handleChange} />
                         <AccountInputSign sign="Target Amount" name="targetAmount" type="number" value={this.state.targetAmount} changeFunction={this.handleChange} />
                         <AccountInputSign sign="Target Date" name="targetDate" type="date" value={this.state.targetDate} changeFunction={this.handleChange} />
-                        <AccountInputSign sign="Type" name="type" value={this.state.type} changeFunction={this.handleChange} />
-                        <AccountInputSign sign="Icon" name="icon" value={this.state.icon} changeFunction={this.handleChange} />
-
-                        <button className="submit" onClick={this.handleSubmit}>Update Goal</button>
+                        <p className="inputSign">Goal Type</p>
+                        <select name="type" value={this.state.type} onChange={this.handleChange}>
+                            <option value="0">House</option>
+                            <option value="1">Vehicle</option>
+                            <option value="2">Education</option>
+                            <option value="3">Emergency Fund</option>
+                            <option value="4">Vacation</option>
+                            <option value="5">Retirement</option>
+                            <option value="6">Custom</option>
+                        </select>
+                        <ErrorBanner value="Error transfering money" changeValueFunc={f => this.changeValue = f} displayErrorFunc={f => this.displayError = f} />
+                        <button className="submit" onClick={this.handleSubmit}>Update Goal</button><br /><br />
+                        <button className="submit" onClick={this.handleDelete}>Delete Goal</button>
                     </div>
                 </div>
             </div>
