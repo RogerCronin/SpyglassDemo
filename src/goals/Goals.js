@@ -9,13 +9,14 @@ class Goals extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            goals: []
+            goals: [],
+            finished: []
         }
     }
 
     async componentDidMount() {
-        const goals = await this.getGoals()
-        this.setState({ goals: goals })
+        const res = await this.getGoals()
+        this.setState({ goals: res[0], finished: res[1] })
     }
 
     async getGoals() {
@@ -31,11 +32,32 @@ class Goals extends React.Component {
             alert("error!")
             return
         }
-        return json.goals.map(g => <Goal key={g.goal_id}
-            title={g.title}
-            id={g.goal_id}
-            type={g.type}
-            progress={g.current_amount / g.target_amount * 100} />)
+
+        let goals = []
+        let finished = []
+
+        for(let g of json.goals) {
+            if(g.current_amount >= g.target_amount) {
+                finished.push(<Goal key={g.goal_id}
+                    title={g.title}
+                    id={g.goal_id}
+                    type={g.type}
+                    progress={100} />)
+            } else {
+                goals.push(<Goal key={g.goal_id}
+                    title={g.title}
+                    id={g.goal_id}
+                    type={g.type}
+                    progress={g.current_amount / g.target_amount * 100} />)
+            }
+        }
+
+        goals.sort((a, b) => a.props.progress - b.props.progress)
+
+        return [
+            goals,
+            finished
+        ]
     }
 
     render() {
@@ -43,7 +65,7 @@ class Goals extends React.Component {
             <div>
                 <NavBar />
                 <div className="content goalsContent">
-                    <h1 className="title">Goals</h1>
+                    <h1 className="title">Unfinished Goals</h1>
                     {/* Search box here, maybe? */}
                     <div>
                         {this.state.goals}
@@ -52,6 +74,10 @@ class Goals extends React.Component {
                             id="newGoal"
                             type="7"
                             progress="-1" />
+                    </div>
+                    <h1 className="title">Finished Goals</h1>
+                    <div className="finishedGoals">
+                        {this.state.finished}
                     </div>
                 </div>
             </div>
@@ -83,7 +109,7 @@ class Goal extends React.Component {
         return (
             <div className="goal" onClick={this.handleClick}>
                 <div className="material-icons">{this.icon(this.props.type)}</div>
-                <p>{this.props.title}</p>
+                <p>{this.props.progress === 100 ? <span className="material-icons goalCheckbox">done</span> : null}{this.props.title}</p>
                 <div className="progressBar" style={{ display: this.props.progress === "-1" ? "none" : "" }}>
                     <div style={{ width: `${this.props.progress}%` }}></div>
                 </div>

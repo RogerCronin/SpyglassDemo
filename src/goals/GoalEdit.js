@@ -18,7 +18,7 @@ class GoalEdit extends React.Component {
             title: "",
             description: "",
             targetAmount: 0,
-            targetDate: "1970-1-1",
+            targetDate: "1970-01-01",
             type: 0,
             icon: 0
         }
@@ -121,7 +121,7 @@ class GoalEdit extends React.Component {
                             <option value="5">Retirement</option>
                             <option value="6">Custom</option>
                         </select>
-                        <ErrorBanner value="Error transfering money" changeValueFunc={f => this.changeValue = f} displayErrorFunc={f => this.displayError = f} />
+                        <ErrorBanner value="Error" changeValueFunc={f => this.changeValue = f} displayErrorFunc={f => this.displayError = f} />
                         <button className="submit" onClick={this.handleSubmit}>Update Goal</button><br /><br />
                         <button className="submit" onClick={this.handleDelete}>Delete Goal</button>
                     </div>

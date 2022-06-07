@@ -11,6 +11,7 @@ const getBalance = require("./goals/getBalance.js")
 const addToGoal = require("./goals/addToGoal.js")
 const updateGoal = require("./goals/updateGoal.js")
 const deleteGoal = require("./goals/deleteGoal.js")
+const newGoal = require("./goals/newGoal.js")
 
 const express = require("express")
 const app = express()
@@ -30,12 +31,14 @@ if(process.argv[2] == "true") {
 
 app.post("/api/submitLogin", submitLogin)
 app.post("/api/makeNewAccount", makeNewAccount)
+
 app.post("/api/getGoals", getGoals)
 app.post("/api/getGoal", getGoal)
 app.post("/api/getBalance", getBalance)
 app.post("/api/addToGoal", addToGoal)
 app.post("/api/updateGoal", updateGoal)
 app.post("/api/deleteGoal", deleteGoal)
+app.post("/api/newGoal", newGoal)
 
 app.listen(port, () => {
     console.log(`Backend open on port ${port}`)

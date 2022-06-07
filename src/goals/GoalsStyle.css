@@ -8,7 +8,7 @@
     width: max(300px, 30vw);
     display: flex;
     justify-content: center;
-    gap: 0 2em;
+    gap: 2em;
     flex-wrap: wrap;
 }
 
@@ -41,4 +41,19 @@
     width: 0%;
     background-color: var(--LightRed);
     border-radius: 0.9em;
+}
+
+.finishedGoals .goal > div {
+    color: var(--DarkGreen);
+}
+
+.finishedGoals .goal .progressBar div {
+    background-color: var(--LightGreen);
+}
+
+.goalCheckbox {
+    position: relative;
+    top: 0.2em;
+    color: var(--LightGreen);
+    font-weight: bold;
 }

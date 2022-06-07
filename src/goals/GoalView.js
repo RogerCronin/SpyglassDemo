@@ -44,7 +44,16 @@ class GoalView extends React.Component {
             icon: goal.icon,
             userID: goal.user_id
         })
-        document.querySelector(".progressBar").childNodes[0].style.width = `${goal.current_amount / goal.target_amount * 100}%`
+        let bar = document.querySelector(".progressBar").childNodes[0]
+        if(goal.current_amount >= goal.target_amount) {
+            document.body.classList.add("greenBG")
+            bar.style.backgroundColor = "var(--LightGreen)"
+        }
+        bar.style.width = `${Math.min(goal.current_amount / goal.target_amount * 100, 100)}%`
+    }
+
+    componentWillUnmount() {
+        document.body.classList.remove("greenBG")
     }
 
     async getInformation() {
@@ -75,7 +84,7 @@ class GoalView extends React.Component {
                         <p>You've saved</p>
                         <h1>${dispMoney(this.state.currentAmount)}</h1>
                         <p>towards {this.state.title}</p>
-                        <p className="description">"{this.state.description}"</p>
+                        {this.state.description === "" ? null : <p className="description">"{this.state.description}"</p>}
                     </div>
                     <div className="middleInfo">
                         <div className="progressBar">
@@ -84,7 +93,7 @@ class GoalView extends React.Component {
                         <p>{dispMoney(this.state.currentAmount)} / {dispMoney(this.state.targetAmount)} dollars</p>
                         <p className="description">{this.savingsTip(this.state.type)}</p>
                         <p className="description">{dispTimestamp(this.state.targetDate)} deadline</p>
-                        <p className="description">Save ${dispMoney(5)} per week</p>
+                        {this.state.targetDate < Date.now() / 1000 ? <b>Deadline has passed</b> : <p className="description">Save ${dispMoney((this.state.targetAmount - this.state.currentAmount) / Math.floor((this.state.targetDate - Date.now() / 1000) / 604800))} per week</p>}
                     </div>
                     <MoneyTransfer goalID={this.props.params.id} />
                 </div>
@@ -170,7 +179,7 @@ class MoneyTransfer extends React.Component {
 }
 
 function dispMoney(v) {
-    return (Math.round(v * 100) / 100 + .001).toString().slice(0, -1)
+    return parseFloat((Math.round(v * 100) / 100 + .001).toString().slice(0, -1)).toFixed(2)
 }
 
 function dispTimestamp(v) {
